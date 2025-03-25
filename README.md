@@ -172,10 +172,9 @@ ModelMeter executes the `ollama list` command, parses the output to extract size
 |----------|------|------|
 | ModelMeter | Automatic calculation, multiple languages, formatting | Additional tool to install |
 | Manual addition from `ollama list` | No installation needed | Time-consuming, error-prone |
-| Shell one-liner¹ | Quick for one-time use | Complex syntax, limited formatting |
+| Shell one-liner[^1] | Quick for one-time use | Complex syntax, limited formatting |
 | Disk usage tools (du) | System-wide analysis | Includes non-model files, less precise |
 
-¹Example shell one-liner: `ollama list | awk 'NR>1 {size=$3; if($4=="GB") size*=1000; if($4=="TB") size*=1000000; sum+=size} END {printf "%.1f %s\n", sum>=1000000 ? sum/1000000 : sum>=1000 ? sum/1000 : sum, sum>=1000000 ? "TB" : sum>=1000 ? "GB" : "MB"}'`
 
 ## 🤝 Contributing
 
@@ -194,4 +193,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🙏 Acknowledgments
 
 - [Ollama](https://github.com/ollama/ollama) - For making local LLM deployment accessible
-- All contributors to this project
+
+---
+[^1]: Example shell one-liner: `ollama list | awk 'NR>1 {size=$3; if($4=="GB") size*=1000; if($4=="TB") size*=1000000; sum+=size} END {printf "%.1f %s\n", sum>=1000000 ? sum/1000000 : sum>=1000 ? sum/1000 : sum, sum>=1000000 ? "TB" : sum>=1000 ? "GB" : "MB"}'`
